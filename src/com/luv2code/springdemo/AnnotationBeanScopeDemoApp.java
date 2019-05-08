@@ -1,14 +1,13 @@
 package com.luv2code.springdemo;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class AnnotationDemoApp {
+public class AnnotationBeanScopeDemoApp {
 
   public static void main(String[] args) {
-    // read spring config java class
-    AnnotationConfigApplicationContext context =
-        new AnnotationConfigApplicationContext(SportConfig.class);
+    // load spring config file
+    ClassPathXmlApplicationContext context =
+        new ClassPathXmlApplicationContext("/com/luv2code/resource/applicationContext.xml");
 
     // retrieve bean from spring container
     Coach theCoach = context.getBean("tennisCoach", Coach.class);
@@ -18,8 +17,8 @@ public class AnnotationDemoApp {
     // check if they are the same
     boolean result = (theCoach == alphaCoach);
 
-    // print out the results
+    //print out the results
     System.out.println(result);
-
   }
+
 }
